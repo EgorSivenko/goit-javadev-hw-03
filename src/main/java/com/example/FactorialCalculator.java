@@ -1,7 +1,5 @@
 package com.example;
 
-import com.google.common.math.BigIntegerMath;
-
 import java.math.BigInteger;
 
 public class FactorialCalculator {
@@ -13,6 +11,12 @@ public class FactorialCalculator {
      * @throws IllegalArgumentException if {@code n} is negative.
      */
     public BigInteger factorial(int n) {
-        return BigIntegerMath.factorial(n);
+        if (n < 0)
+            throw new IllegalArgumentException("Number must be >= 0");
+
+        BigInteger result = BigInteger.ONE;
+        for (int i = 2; i <= n; i++)
+            result = result.multiply(BigInteger.valueOf(i));
+        return result;
     }
 }
